@@ -9,15 +9,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
+      <div class="row mb-2 ml-1">
         <div class="col-sm-6">
-          <h1>Simple Tables</h1>
+          <h1>Admin List</h1>
         </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Simple Tables</li>
-          </ol>
+        <div class="col-sm-6" style="text-align: right">
+          <a href="{{ url('admin/admin/add')}}" class="btn btn-primary">Add new admin</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->

@@ -100,11 +100,12 @@ class AuthController extends Controller
     public function PostReset($token, Request $request)
     {
         if ($request->password == $request->cpassword) {
-            $user = User::getTokenSingle($remember_token);
+            $user = User::getTokenSingle($token);
             $user->password = Hash::make($request->password);
+            $user->remember_token = Str::random(30);
             $user->save();
 
-            return redirect('login')->with('success', "Password successfully reset.");
+            return redirect(url(''))->with('success', "Password successfully reset.");
 
         } else {
             return redirect()->back()->with('error', "Password and Confirm Password doesn't match");
