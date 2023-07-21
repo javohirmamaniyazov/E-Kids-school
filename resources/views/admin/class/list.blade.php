@@ -26,7 +26,6 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Search Class</h3>
@@ -77,6 +76,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach($getrecord as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->created_by_name }}</td>
+                        <td>{{ date('d-m-Y H:i A', strtotime($item->created_at)) }}</td>
+                        <td></td>
+
+                      </tr>
+                    @endforeach
                 </tbody>
               </table>
               <div class="m-3 float-right">
