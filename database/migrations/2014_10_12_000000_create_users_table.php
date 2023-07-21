@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->tinyInteger('user_type')->default(3)->comment("1=admin, 2=teacher, 3=student, 4=parent");
+            $table->tinyInteger('is_deleted')->default(0)->comment("0=not deleted, 1=deleted");
             $table->timestamps();
         });
     }

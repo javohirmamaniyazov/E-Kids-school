@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add New Admin</h1>
+            <h1>Edit Admin</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -28,16 +28,16 @@
                 <div class="card-body">
                   <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" required value="{{ old('name')}}" class="form-control" placeholder="Name">
+                        <input type="text" name="name" value="{{ old('name', $getRecord->name)  }}" class="form-control" placeholder="Name">
                   </div>
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" required value="{{ old('email')}}" class="form-control" placeholder="Email">
+                    <input type="email" name="email" value="{{ old('email', $getRecord->email) }}" class="form-control" placeholder="Email">
                     <p class="text-danger">{{ $errors->first('email')}}</p>
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password"  required class="form-control"  placeholder="Password">
+                    <input type="password" name="password"   class="form-control"  placeholder="Password">
                   </div>
                 </div>
                 <!-- /.card-body -->
