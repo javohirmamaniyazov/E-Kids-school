@@ -149,9 +149,9 @@
             </li>
             <li class="nav-item">
               <a href="{{url('admin/class/list')}}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
-                <i class="nav-icon far fa-user"></i>
+                <i class="nav-icon fas fa-regular fa-school"></i>
                 <p>
-                  Admin
+                  Class
                 </p>
               </a>
             </li>
