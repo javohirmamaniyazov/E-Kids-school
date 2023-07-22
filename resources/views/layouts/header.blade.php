@@ -147,6 +147,7 @@
                 </p>
               </a>
             </li>
+
             <li class="nav-item">
               <a href="{{url('admin/class/list')}}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
                 <i class="nav-icon fas fa-regular fa-school"></i>
@@ -155,6 +156,26 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{url('admin/subject/list')}}" class="nav-link @if(Request::segment(2) == 'subject') active @endif">
+                <i class="nav-icon fas fa-regular fa-book"></i>
+                <p>
+                  Subject
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{url('admin/assign_subject/list')}}" class="nav-link @if(Request::segment(2) == 'assign_subject') active @endif">
+                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                <i class="nav-icon fas fa-solid fa-bookmark"></i>
+                <p>
+                  Assign Subject
+                </p>
+              </a>
+            </li>
+
             @elseif(Auth::user()->user_type == 2)
             <li class="nav-item">
               <a href="{{url('teacher/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
