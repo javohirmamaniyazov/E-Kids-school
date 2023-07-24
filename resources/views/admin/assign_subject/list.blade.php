@@ -101,6 +101,8 @@
                                             <td>
                                                 <a href="{{ url('admin/assign_subject/edit/' . $item->id) }}"
                                                     class="btn btn-warning"><i class="fas fa-solid fa-pen"></i></a>
+                                                <a href="{{ url('admin/assign_subject/edit_single/' . $item->id) }}"
+                                                    class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                                 <a href="{{ url('admin/assign_subject/delete/' . $item->id) }}"
                                                     class="btn btn-danger"><i class="fa fa-trash"
                                                         aria-hidden="true"></i></a>
