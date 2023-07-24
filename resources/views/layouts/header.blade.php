@@ -149,6 +149,17 @@
             </li>
 
             <li class="nav-item">
+              <a href="{{url('admin/student/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
+                <i class="nav-icon far fa-address-card"></i>
+                <p>
+                  Student 
+                </p>
+              </a>
+            </li>
+
+            
+
+            <li class="nav-item">
               <a href="{{url('admin/class/list')}}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
                 <i class="nav-icon fas fa-regular fa-school"></i>
                 <p>
@@ -176,12 +187,32 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="{{url('admin/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Update Password
+                </p>
+              </a>
+            </li>
+
             @elseif(Auth::user()->user_type == 2)
             <li class="nav-item">
               <a href="{{url('teacher/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{url('teacher/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Update Password
                 </p>
               </a>
             </li>
@@ -194,12 +225,32 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{url('student/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Update Password
+                </p>
+              </a>
+            </li>
             @elseif(Auth::user()->user_type == 4)
             <li class="nav-item">
               <a href="{{url('parent/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{url('parent/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Update Password
                 </p>
               </a>
             </li>

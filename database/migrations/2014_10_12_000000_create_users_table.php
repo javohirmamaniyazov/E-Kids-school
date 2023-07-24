@@ -14,12 +14,27 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('last_name', 255)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('admission_number', 50)->nullable();
+            $table->string('roll_number', 50)->nullable();
+            $table->integer('class_id')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('gender', 50)->nullable();
+            $table->string('casta', 50)->nullable();
+            $table->string('religion', 50)->nullable();
+            $table->string('mobile_number', 15)->nullable();
+            $table->date('admission_date')->nullable();
+            $table->string('profile_pic', 100)->nullable();
+            $table->string('blood_group', 10)->nullable();
+            $table->string('height', 10)->nullable();
+            $table->string('weight', 10)->nullable();
             $table->tinyInteger('user_type')->default(3)->comment("1=admin, 2=teacher, 3=student, 4=parent");
             $table->tinyInteger('is_deleted')->default(0)->comment("0=not deleted, 1=deleted");
+            $table->tinyInteger('status')->default(0)->comment("0=active, 1=inactive");
             $table->timestamps();
         });
     }
