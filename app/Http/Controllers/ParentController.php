@@ -123,4 +123,12 @@ class ParentController extends Controller
             abort(404);
         }
     }
+
+    public function myStudent($id)
+    {
+        $data['parent_id'] = $id;
+        $data['getRecord'] = User::getParent();
+        $data['header_title'] = "Parent Student List";
+        return view('admin.parent.my_student', $data);
+    }
 }
