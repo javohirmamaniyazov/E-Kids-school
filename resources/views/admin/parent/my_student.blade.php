@@ -11,7 +11,7 @@
     <div class="container-fluid">
       <div class="row mb-2 ml-1">
         <div class="col-sm-6">
-          <h1>Parent Student List (Total : {{ $getRecord->total() }})</h1>
+          <h1>Parent Student List - {{ $getParent->name }}  {{ $getParent->last_name}}</h1>
         </div>
         <div class="col-sm-6" style="text-align: right">
           <a href="{{ url('admin/parent/add')}}" class="btn btn-primary">Add new Parent</a>
@@ -55,7 +55,7 @@
                 
                 <div class="form-group col-md-2">
                   <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
-                  <a href="{{url('admin/parent/my_student/'.$parent_id)}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
+                  <a href="{{url('admin/parent/my-student/'.$parent_id)}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
                 </div>
               </div>
               </div> 
@@ -64,32 +64,51 @@
               
 
           @include('_message')
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">All Students</h3>
+          @if (!empty($getSearchStudent))
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">All Students</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Profile</th>
+                      <th>Student Name</th>
+                      <th>Email</th>
+                      <th>Parent Name</th>
+                      <th>Create Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($getSearchStudent as $item)
+                    <tr>
+                      <td>{{ $item->id}}</td>
+                      <td> 
+                        @if (!empty($item->getProfile()))
+                            <img src="{{ $item->getProfile()}}" alt="" height="50px" width="50px" style="border-radius: 50%" >
+                        @endif
+                      </td>
+                      <td>{{ $item->name}} {{ $item->last_name}}</td>
+                      <td>{{ $item->email}}</td>
+                      <td>{{ $item->parent_name}}</td>
+                      <td style="min-width: 108px">{{ date('d-m-Y H:i A', strtotime($item->created_at)) }}</td>
+                      <td style="min-width: 101px">
+                        <a href="{{  url('admin/parent/assign_student/'.$item->id.'/parent/'.$parent_id)}}" class="btn btn-primary btn-sm"><i class="fas fa-user-plus"> Add to Parent</i></a>
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                <div class="m-3 float-right">
+              </div>
+              </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Profile</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Create Date</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 
-                </tbody>
-              </table>
-              <div class="m-3 float-right">
-            </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
+          @endif
           <!-- /.card -->
 
           <div class="card">
@@ -103,19 +122,31 @@
                   <tr>
                     <th>#</th>
                     <th>Profile</th>
-                    <th>Name</th>
+                    <th>Student Name</th>
                     <th>Email</th>
-                    <th>Gender</th>
-                    <th>Mobile Number</th>
-                    <th>Occupation</th>
-                    <th>Address</th>
-                    <th>Status</th>
+                    <th>Parent Name</th>
                     <th>Create Date</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                 
+                  @foreach ($getRecord as $item)
+                  <tr>
+                    <td>{{ $item->id}}</td>
+                    <td> 
+                      @if (!empty($item->getProfile()))
+                          <img src="{{ $item->getProfile()}}" alt="" height="50px" width="50px" style="border-radius: 50%" >
+                      @endif
+                    </td>
+                    <td>{{ $item->name}} {{ $item->last_name}}</td>
+                    <td>{{ $item->email}}</td>
+                    <td>{{ $item->parent_name}}</td>
+                    <td style="min-width: 108px">{{ date('d-m-Y H:i A', strtotime($item->created_at)) }}</td>
+                    <td style="min-width: 101px">
+                      <a href="{{  url('admin/parent/assign_student/'.$item->id.'/delete')}}" class="btn btn-danger btn-sm"><i class="fas fa-user-minus"> Delete in Parent</i></a>
+                    </td>
+                  </tr>
+                  @endforeach
                 </tbody>
               </table>
               <div class="m-3 float-right">

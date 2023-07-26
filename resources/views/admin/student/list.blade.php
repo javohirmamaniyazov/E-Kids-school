@@ -85,7 +85,8 @@
                   <tr>
                     <th>#</th>
                     <th>Profile</th>
-                    <th>Name</th>
+                    <th>Student Name</th>
+                    <th>Parent Name</th>
                     <th>Email</th>
                     <th>Admission Number</th>
                     <th>Class</th>
@@ -112,25 +113,26 @@
                               <img src="{{ $item->getProfile()}}" alt="" height="50px" width="50px" style="border-radius: 50%" >
                           @endif
                         </td>
-                        <td>{{ $item->name}} {{ $item->last_name}}</td>
+                        <td style="min-width: 130px">{{ $item->name}} {{ $item->last_name}}</td>
+                        <td style="min-width: 130px">{{ $item->parent_name}} {{ $item->parent_last_name}}</td>
                         <td>{{ $item->email}}</td>
-                        <td>{{ $item->admission_number}}</td>
+                        <td style="min-width: 158px">{{ $item->admission_number}}</td>
                         <td style="min-width: 100px">{{ $item->class_name}}</td>
                         <td>{{ $item->gender}}</td>
-                        <td style="min-width: 108px">
+                        <td style="min-width: 115px">
                           @if (!empty($item->date_of_birth))
                           {{ date('d-m-Y', strtotime($item->date_of_birth))}}
                           @endif  
                         </td>
                         <td style="min-width: 86px">{{ $item->casta}}</td>
                         <td>{{ $item->religion}}</td>
-                        <td>{{ $item->mobile_number}}</td>
-                        <td style="min-width: 108px">
+                        <td style="min-width: 132px">{{ $item->mobile_number}}</td>
+                        <td style="min-width: 135px">
                           @if (!empty($item->admission_date))
                           {{ date('d-m-Y', strtotime($item->admission_date))}}
                           @endif   
                         </td>
-                        <td>{{ $item->blood_group}}</td>
+                        <td style="min-width: 112px">{{ $item->blood_group}}</td>
                         <td>{{ $item->height}}</td>
                         <td>{{ $item->weight}}</td>
                         <td>{{ ($item->status == 0) ? 'Active' : 'Inactive'}}</td>
