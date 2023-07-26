@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('gender', 50)->nullable();
             $table->string('casta', 50)->nullable();
             $table->string('religion', 50)->nullable();
+            $table->string('marital_status', 50)->nullable();
             $table->string('mobile_number', 15)->nullable();
             $table->date('admission_date')->nullable();
             $table->string('profile_pic', 100)->nullable();
@@ -35,6 +36,10 @@ return new class extends Migration
             $table->string('weight', 10)->nullable();
             $table->string('occupation', 255)->nullable();
             $table->string('address', 255)->nullable();
+            $table->string('permanent_address', 255)->nullable();
+            $table->string('qualification', 255)->nullable();
+            $table->string('work_experience', 255)->nullable();
+            $table->string('note', 255)->nullable();
             $table->tinyInteger('user_type')->default(3)->comment("1=admin, 2=teacher, 3=student, 4=parent");
             $table->tinyInteger('is_deleted')->default(0)->comment("0=not deleted, 1=deleted");
             $table->tinyInteger('status')->default(0)->comment("0=active, 1=inactive");

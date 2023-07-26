@@ -8,6 +8,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +68,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/class/edit/{id}', [ClassController::class, 'edit']);
     Route::post('admin/class/edit/{id}', [ClassController::class, 'update']);
     Route::get('admin/class/delete/{id}', [ClassController::class, 'delete']);
+
+     //Teacher url
+     Route::get('admin/teacher/list', [TeacherController::class, 'list']);
+     Route::get('admin/teacher/add', [TeacherController::class, 'add']);
+     Route::post('admin/teacher/add', [TeacherController::class, 'insert']);
+     Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit']);
+     Route::post('admin/teacher/edit/{id}', [TeacherController::class, 'update']);
+     Route::get('admin/teacher/delete/{id}', [TeacherController::class, 'delete']);
 
     //subject url
     Route::get('admin/subject/list', [SubjectController::class, 'list']);

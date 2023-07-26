@@ -195,4 +195,35 @@ class User extends Authenticatable
       }
    }
 
+   static public function getTeacher(){
+      $return =  self::select('users.*')
+                        ->where('users.user_type', '=', 2)
+                        ->where('users.is_deleted', '=', 0);
+
+                        if (!empty(Request::get('name'))) {
+                           $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
+                        }
+                  
+                        if (!empty(Request::get('last_name'))) {
+                           $return = $return->where('users.last_name', 'like', '%' . Request::get('last_name') . '%');
+                        }
+                  
+                        if (!empty(Request::get('email'))) {
+                           $return = $return->where('users.email', 'like', '%' . Request::get('email') . '%');
+                        }
+                  
+                        if (!empty(Request::get('date'))) {
+                           $return = $return->whereDate('users.created_at', '=', Request::get('date'));
+                        }
+                  
+                        if (!empty(Request::get('status'))) {
+                           $status = (Request::get('status') == 100) ? 0 : 1;
+                           $return = $return->where('users.status', '=', $status);
+                        }
+
+      $return = $return->orderBy('users.id', 'desc')->paginate(20);
+
+      return $return;
+   }
+
 }
