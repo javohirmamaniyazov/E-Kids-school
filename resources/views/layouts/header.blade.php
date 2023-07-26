@@ -97,11 +97,54 @@
         </div>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
+      {{-- <li class="nav-item">
+          <div class="user-panel ml-2 mr-3 d-flex">
+            <div class="image d-flex">
+              <p class="m-2" style="font-size: 16px">{{ Auth::user()->name}}</p>
+              <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            </div>
         </a>
-      </li>
+      </li> --}}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="padding: 4px 8px;" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline medium">{{ Auth::user()->name }}</span>
+            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2 m-0" width="35px" alt="User Image">  
+          </a>
+        <!-- Dropdown - User Information -->
+        
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" style="margin-top: 10px" aria-labelledby="userDropdown">
+          @if (Auth::user()->user_type == 1)  
+            <a class="dropdown-item" href="">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+            </a>
+          @endif
+          @if (Auth::user()->user_type == 2)  
+            <a class="dropdown-item" href="{{ url('teacher/account') }}">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+            </a>
+          @endif
+          @if (Auth::user()->user_type == 3)  
+            <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+            </a>
+          @endif
+          @if (Auth::user()->user_type == 4)  
+            <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+            </a>
+          @endif
+            <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{url('logout')}}">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    {{ __('Log Out') }}
+                </a>
+        </div>
+    </li>
     </ul>
   </nav>
   <!-- /.navbar -->
