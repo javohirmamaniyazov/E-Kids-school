@@ -115,9 +115,14 @@
         
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" style="margin-top: 10px" aria-labelledby="userDropdown">
           @if (Auth::user()->user_type == 1)  
-            <a class="dropdown-item" href="">
+            <a class="dropdown-item" href="{{ url('admin/account')}}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
+            </a>
+            <a href="{{url('admin/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+              {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+              <i class=" fas fa-user-lock mr-1"></i>
+              {{ __('New Password') }}
             </a>
           @endif
           @if (Auth::user()->user_type == 2)  
@@ -125,24 +130,39 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
             </a>
+            <a href="{{url('teacher/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+              {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+              <i class=" fas fa-user-lock mr-1"></i>
+              {{ __('New Password') }}
+            </a>
           @endif
           @if (Auth::user()->user_type == 3)  
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ url('student/account') }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
+            </a>
+            <a href="{{url('student/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+              {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+              <i class=" fas fa-user-lock mr-1"></i>
+              {{ __('New Password') }}
             </a>
           @endif
           @if (Auth::user()->user_type == 4)  
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ url('parent/account')}}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
             </a>
+            <a href="{{url('parent/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+              {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+              <i class=" fas fa-user-lock mr-1"></i>
+              {{ __('New Password') }}
+            </a>
           @endif
             <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url('logout')}}">
+            <a class="dropdown-item" href="{{url('logout')}}">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     {{ __('Log Out') }}
-                </a>
+            </a>
         </div>
     </li>
     </ul>
@@ -247,15 +267,6 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="{{url('admin/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
-                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
-                <i class="nav-icon fas fa-user-lock"></i>
-                <p>
-                  Update Password
-                </p>
-              </a>
-            </li>
 
             @elseif(Auth::user()->user_type == 2)
             <li class="nav-item">
@@ -267,15 +278,6 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="{{url('teacher/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
-                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
-                <i class="nav-icon fas fa-user-lock"></i>
-                <p>
-                  Update Password
-                </p>
-              </a>
-            </li>
             @elseif(Auth::user()->user_type == 3)
             <li class="nav-item">
               <a href="{{url('student/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
@@ -286,15 +288,6 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="{{url('student/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
-                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
-                <i class="nav-icon fas fa-user-lock"></i>
-                <p>
-                  Update Password
-                </p>
-              </a>
-            </li>
             @elseif(Auth::user()->user_type == 4)
             <li class="nav-item">
               <a href="{{url('parent/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
@@ -304,26 +297,8 @@
                 </p>
               </a>
             </li>
-
-            <li class="nav-item">
-              <a href="{{url('parent/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
-                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
-                <i class="nav-icon fas fa-user-lock"></i>
-                <p>
-                  Update Password
-                </p>
-              </a>
-            </li>
                 
             @endif
-            <li class="nav-item">
-              <a href="{{url('logout')}}" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                <p>
-                  Logout
-                </p>
-              </a>
-            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
