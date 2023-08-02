@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class StudentController extends Controller
+class  StudentController extends Controller
 {
     public function list()
     {
