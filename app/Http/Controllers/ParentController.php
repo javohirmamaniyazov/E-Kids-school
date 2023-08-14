@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
@@ -148,5 +149,13 @@ class ParentController extends Controller
         $student->save();
 
         return redirect()->back()->with('success', 'Student Successfully Deleted in Parent');
+    }
+
+    public function myStudentParent() {
+        $id = Auth::user()->id;
+        $data['getParent'] = User::getSingle($id);
+        $data['getRecord'] = User::getMyStudent($id);
+        $data['header_title'] = "Parent Student List";
+        return view('parent.my_student', $data);
     }
 }

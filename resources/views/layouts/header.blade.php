@@ -288,6 +288,15 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="{{url('student/my_subject')}}" class="nav-link @if(Request::segment(2) == 'my_subject') active @endif">
+                <i class="nav-icon fas fa-solid fa-address-book"></i>
+                <p>
+                  My Subject
+                </p>
+              </a>
+            </li>
+
             @elseif(Auth::user()->user_type == 4)
             <li class="nav-item">
               <a href="{{url('parent/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
@@ -297,6 +306,16 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{url('parent/my_student')}}" class="nav-link @if(Request::segment(2) == 'my_student') active @endif">
+                <i class="nav-icon fas fa-solid fa-house-user"></i>
+                <p>
+                  My Student
+                </p>
+              </a>
+            </li>
+
                 
             @endif
           </ul>
