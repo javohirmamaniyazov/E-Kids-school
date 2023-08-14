@@ -50,6 +50,7 @@
                     <th>Height</th>
                     <th>Weight</th>
                     <th>Create Date</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -82,6 +83,9 @@
                       <td>{{ $item->height}}</td>
                       <td>{{ $item->weight}}</td>
                     <td style="min-width: 119px">{{ date('d-m-Y H:i A', strtotime($item->created_at)) }}</td>
+                    <td>
+                        <a href="{{url('parent/my_student/subject/'.$value->id)}}">Subject</a>
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
