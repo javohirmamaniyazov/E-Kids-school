@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add New Assign Subject</h1>
+                        <h1>Add New Assign Class Teacher</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -34,12 +34,12 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                      <label>Subject Name</label>
+                                      <label>Teacher Name</label>
                                           <option value="0">Select Class</option>
-                                          @foreach ($getSubject as $subject)
+                                          @foreach ($getTeacher as $teacher)
                                           <div>
                                             <label>
-                                              <input type="checkbox" value="{{ $subject->id }}" name="subject_id[]">{{ $subject->name}}
+                                              <input type="checkbox" value="{{ $teacher->id }}" name="teacher_id[]">{{ $teacher->name}}
                                             </label>
                                           </div>
 
