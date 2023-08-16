@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignClassTeacherController extends Controller
 {
-    public function list() {
+    public function list()
+    {
         $data['getRecord'] = AssignClassTeacherModel::getRecord();
         $data['header_title'] = 'Assign Class Teacher List';
         return view('admin.assign_class_teacher.list', $data);
@@ -24,7 +25,8 @@ class AssignClassTeacherController extends Controller
         return view('admin.assign_class_teacher.add', $data);
     }
 
-    public function insert(Request $request) {
+    public function insert(Request $request)
+    {
         if (!empty($request->teacher_id)) {
             foreach ($request->teacher_id as $teacher_id) {
                 $countAlready = AssignClassTeacherModel::countAlready($request->class_id, $teacher_id);
@@ -45,6 +47,22 @@ class AssignClassTeacherController extends Controller
             return redirect('admin/assign_class_teacher/list')->with('success', 'Assign Class to Teacher Successfully');
         } else {
             return redirect('admin/assign_class_teacher/add')->with('error', 'Something went wrong. Please try again');
+        }
+    }
+
+    public function edit($id)
+    {
+        $getRecord = AssignClassTeacherModel::getSingle($id);
+        if (!empty($getRecord)) {
+            $data['getRecord'] = $getRecord;
+            $data['getAssignTeacherID'] = AssignClassTeacherModel::getAssignTeacherID($getRecord->class_id);
+            $data['getClass'] = ClassModel::getClass();
+            $data['getTeacher'] = User::getTeacherClass();
+            $data['header_title'] = 'Edit Assign Class to Teacher';
+
+            return view('admin.assign_class_teacher.edit', $data);
+        } else {
+            abort(404);
         }
     }
 }
