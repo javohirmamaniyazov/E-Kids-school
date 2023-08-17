@@ -117,6 +117,7 @@ class ClassSubjectController extends Controller
 
     public function update_single($id, Request $request)
     {
+        // dd($request->all());
         $countAlready = ClassSubjectModel::countAlready($request->class_id, $request->subject_id);
         if (!empty($countAlready)) {
             $countAlready->status = $request->status;
