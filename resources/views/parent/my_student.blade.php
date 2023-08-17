@@ -84,7 +84,7 @@
                       <td>{{ $item->weight}}</td>
                     <td style="min-width: 119px">{{ date('d-m-Y H:i A', strtotime($item->created_at)) }}</td>
                     <td>
-                        <a href="{{url('parent/my_student/subject/'.$value->id)}}">Subject</a>
+                        <a href="{{url('parent/my_student/subject/'.$item->id)}}">Subject</a>
                     </td>
                   </tr>
                   @endforeach
