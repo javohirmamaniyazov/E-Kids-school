@@ -297,6 +297,16 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="{{url('teacher/my_student')}}" class="nav-link @if(Request::segment(2) == 'my_student') active @endif">
+                {{-- <i class="nav-icon fas fa-solid fa-clipboard-check"></i> --}}
+                <i class="nav-con far fa-solid fa-users-rectangle"></i>
+                <p>
+                  My Students
+                </p>
+              </a>
+            </li>
+
             @elseif(Auth::user()->user_type == 3)
             <li class="nav-item">
               <a href="{{url('student/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
