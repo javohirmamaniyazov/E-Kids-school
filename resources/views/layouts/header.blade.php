@@ -237,9 +237,52 @@
               </a>
             </li>
 
-            
+            <li class="nav-item @if(Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher') menu-is-opening menu-open @endif ">
+              <a href="#" class="nav-link @if(Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher') active @endif">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Academics
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('admin/class/list')}}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
+                    <i class="nav-icon fas fa-regular fa-school"></i>
+                    <p>
+                      Class
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('admin/subject/list')}}" class="nav-link @if(Request::segment(2) == 'subject') active @endif">
+                    <i class="nav-icon fas fa-regular fa-book"></i>
+                    <p>
+                      Subject
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('admin/assign_subject/list')}}" class="nav-link @if(Request::segment(2) == 'assign_subject') active @endif">
+                    {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                    <i class="nav-icon fas fa-solid fa-bookmark"></i>
+                    <p>
+                      Assign Subject
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('admin/assign_class_teacher/list')}}" class="nav-link @if(Request::segment(2) == 'assign_class_teacher') active @endif">
+                    <i class="nav-icon fas fa-solid fa-house-user"></i>
+                    <p>
+                      Assign Class Teacher
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>            
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="{{url('admin/class/list')}}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
                 <i class="nav-icon fas fa-regular fa-school"></i>
                 <p>
@@ -259,7 +302,7 @@
 
             <li class="nav-item">
               <a href="{{url('admin/assign_subject/list')}}" class="nav-link @if(Request::segment(2) == 'assign_subject') active @endif">
-                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
+                
                 <i class="nav-icon fas fa-solid fa-bookmark"></i>
                 <p>
                   Assign Subject
@@ -269,13 +312,12 @@
 
             <li class="nav-item">
               <a href="{{url('admin/assign_class_teacher/list')}}" class="nav-link @if(Request::segment(2) == 'assign_class_teacher') active @endif">
-                {{-- <i class="nav-icon fas fa-solid fa-book-bookmark"></i> --}}
                 <i class="nav-icon fas fa-solid fa-house-user"></i>
                 <p>
                   Assign Class Teacher
                 </p>
               </a>
-            </li>
+            </li> --}}
 
 
 
