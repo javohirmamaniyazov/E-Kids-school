@@ -110,6 +110,7 @@ Route::group(['middleware' => 'admin'], function () {
     //class timetable section
     Route::get('admin/class_timetable/list', [ClassTimetableController::class, 'list']);
     Route::post('admin/class_timetable/get_subject', [ClassTimetableController::class, 'get_subject']);
+    Route::post('admin/class_timetable/add', [ClassTimetableController::class, 'insert']);
 
 
     //update password
