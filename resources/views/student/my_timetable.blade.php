@@ -19,10 +19,11 @@
          <div class="row">
             <div class="col-md-12">
                @include('_message')
-               <div class="card">
+               
+               @foreach ($getRecord as $item)
                   <div class="card">
                      <div class="card-header">
-                        <h3 class="card-title">My Timetable</h3>
+                        <h3 class="card-title">{{ $item['name']}}</h3>
                      </div>
                      <!-- /.card-header -->
                      <div class="card-body p-0">
@@ -36,15 +37,19 @@
                               </tr>
                            </thead>
                            <tbody>
-                              
+                              @foreach ($item['week'] as $itemW)
+                                  <tr>
+                                    <th>{{ $itemW['week_name'] }}</th>
+                                    <td>{{ !empty($itemW['start_time']) ? date('h:i A', strtotime($itemW['start_time'])) : '' }}</td>
+                                    <td>{{ !empty($itemW['end_time']) ? date('h:i A', strtotime($itemW['end_time'])) : '' }}</td>
+                                    <td>{{ $itemW['room_number'] }}</td>
+                                  </tr>
+                              @endforeach
                            </tbody>
                         </table>
                      </div>
-                     <!-- /.card-body -->
                   </div>
-                  </form>
-                  <!-- /.card-body -->
-               </div>
+               @endforeach  
             </div>
             <!-- /.col -->
          </div>
