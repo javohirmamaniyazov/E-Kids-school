@@ -7,6 +7,7 @@ use App\Models\ClassSubjectModel;
 use App\Models\ClassSubjectTimetableModel;
 use App\Models\WeekModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClassTimetableController extends Controller
 {
@@ -83,32 +84,32 @@ class ClassTimetableController extends Controller
     //student section
     public function MyTimetable()
     {
-        // $getWeek = WeekModel::getRecord();
-        // $week = array();
-        // foreach ($getWeek as $value) {
-        //     $dataW = array();
-        //     $dataW['week_id'] = $value->id;
-        //     $dataW['week_name'] = $value->name;
-        //     if (!empty($request->class_id) && !empty($request->subject_id)) {
-        //         $getClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($request->class_id, $request->subject_id, $value->id);
-        //         if (!empty($getClassSubject)) {
-        //             $dataW['start_time'] = $getClassSubject->start_time;
-        //             $dataW['end_time'] = $getClassSubject->end_time;
-        //             $dataW['room_number'] = $getClassSubject->room_number;
-        //         } else {
-        //             $dataW['start_time'] = '';
-        //             $dataW['end_time'] = '';
-        //             $dataW['room_number'] = '';
-        //         }
-        //     } else {
-        //         $dataW['start_time'] = '';
-        //         $dataW['end_time'] = '';
-        //         $dataW['room_number'] = '';
-        //     }
-        //     $week[] = $dataW;
-        // }
+        $result = array();
+        $getRecord = ClassSubjectModel::MyStudent(Auth::user()->class_id);
+        foreach($getRecord as $value) {
+            $dataS['name'] = $value->subject_name;
+            $getWeek = WeekModel::getRecord();
+            $week = array();
+            foreach($getWeek as $valueW) {
+                $dataW = array();
+                $dataW['week_name'] = $valueW->name;
+                $getClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($value->class_id, $value->subject_id, $valueW->id);
+                if (!empty($getClassSubject)) {
+                    $dataW['start_time'] = $getClassSubject->start_time;
+                    $dataW['end_time'] = $getClassSubject->end_time;
+                    $dataW['room_number'] = $getClassSubject->room_number;
+                } else {
+                    $dataW['start_time'] = '';
+                    $dataW['end_time'] = '';
+                    $dataW['room_number'] = '';
+                }
+                $week[] = $dataW;
+            }
+            $dataS['week'] = $week;
+            $result[] = $dataS;
+        }
+        $data['getRecord'] = $result;
 
-        // $data['week'] = $week;
         $data['header_title'] = "My Timetable";
         return view('student.my_timetable', $data);
     }
