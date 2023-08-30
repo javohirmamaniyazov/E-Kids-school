@@ -337,6 +337,16 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="{{url('student/my_timetable')}}" class="nav-link @if(Request::segment(2) == 'my_timetable') active @endif">
+                <i class="nav-icon fas fa-solid fa-calendar-days"></i>
+                <p>
+                  My Timetable
+                </p>
+              </a>
+            </li>
+
+
             @elseif(Auth::user()->user_type == 4)
             <li class="nav-item">
               <a href="{{url('parent/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
