@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
 use App\Models\ClassSubjectTimetableModel;
+use App\Models\SubjectModel;
 use App\Models\WeekModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,11 +87,11 @@ class ClassTimetableController extends Controller
     {
         $result = array();
         $getRecord = ClassSubjectModel::MyStudent(Auth::user()->class_id);
-        foreach($getRecord as $value) {
+        foreach ($getRecord as $value) {
             $dataS['name'] = $value->subject_name;
             $getWeek = WeekModel::getRecord();
             $week = array();
-            foreach($getWeek as $valueW) {
+            foreach ($getWeek as $valueW) {
                 $dataW = array();
                 $dataW['week_name'] = $valueW->name;
                 $getClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($value->class_id, $value->subject_id, $valueW->id);
@@ -114,4 +115,34 @@ class ClassTimetableController extends Controller
         return view('student.my_timetable', $data);
     }
 
+    //teacher side
+
+    public function MyTimetableTeacher($class_id, $subject_id)
+    {
+        $data['getClass'] = ClassModel::getSingle($class_id);
+        $data['getSubject'] = SubjectModel::getSingle($subject_id);
+        $getWeek = WeekModel::getRecord();
+        $week = array();
+        foreach ($getWeek as $valueW) {
+            $dataW = array();
+            $dataW['week_name'] = $valueW->name;
+            $getClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $valueW->id);
+            if (!empty($getClassSubject)) {
+                $dataW['start_time'] = $getClassSubject->start_time;
+                $dataW['end_time'] = $getClassSubject->end_time;
+                $dataW['room_number'] = $getClassSubject->room_number;
+            } else {
+                $dataW['start_time'] = '';
+                $dataW['end_time'] = '';
+                $dataW['room_number'] = '';
+            }
+            $result[] = $dataW;
+        }
+        $data['getRecord'] = $result;
+
+        // dd($result);
+
+        $data['header_title'] = "My Timetable";
+        return view('teacher.my_timetable', $data);
+    }
 }

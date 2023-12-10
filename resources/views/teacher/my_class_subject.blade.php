@@ -35,7 +35,9 @@
                                             <th>Class Name</th>
                                             <th>Subject Name</th>
                                             <th>Subject Type</th>
+                                            <th>My Class Timetable</th>
                                             <th>Create Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     {{-- {{ dd($getRecord) }} --}}
@@ -46,7 +48,18 @@
                                                 <td>{{ $item->class_name }}</td>
                                                 <td>{{ $item->subject_name }}</td>
                                                 <td>{{ $item->subject_type }}</td>
+                                                <td>
+                                                    @php
+                                                        $ClassSubject = $item->getMyTimeTable($item->class_id, $item->subject_id);
+                                                    @endphp
+                                                    @if (!empty($ClassSubject))
+                                                        {{ $ClassSubject->start_time}} to {{ $ClassSubject->end_time}}
+                                                    @endif
+                                                </td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($item->created_at)) }}</td>
+                                                <td>
+                                                    <a href="{{url('teacher/my_class_subject/class_timetable/'.$item->class_id.'/'.$item->subject_id)}}" class="btn btn-primary">My Class Timetable</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
