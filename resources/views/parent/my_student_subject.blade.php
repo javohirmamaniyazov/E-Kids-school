@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2 ml-1">
                     <div class="col-sm-6">
-                        <h1>My Subject</h1>
+                        <h1>My Subject - <span style="color: blue">({{ $getUser->name}} {{ $getUser->last_name}} )</span> </h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -33,6 +33,7 @@
                                         <tr>
                                             <th>Subject Name</th>
                                             <th>Subject Type</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     {{-- {{ dd($getRecord) }} --}}
@@ -41,6 +42,10 @@
                                             <tr>
                                                 <td>{{$item->subject_name}}</td>
                                                 <td>{{$item->subject_type}}</td>
+                                                <td>
+                                                    <a href="{{ url('parent/my_student/subject/class_timetable/' . $item->class_id . '/' . $item->subject_id.'/'.$getUser->id) }}"
+                                                        class="btn btn-primary">My Class Timetable</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
