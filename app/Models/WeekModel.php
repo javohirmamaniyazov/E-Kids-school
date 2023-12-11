@@ -9,14 +9,15 @@ class WeekModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'weeks';
+    protected $table = 'week';
 
     static public function getRecord() {
         return self::get();
     }
 
-    static public function getWeekUsingName($weekname) {
-        return WeekModel::where('name', '=', $weekname)->first();
+    static public function getWeekUsingName($dayOfWeek) {
+        return self::where('name', '=', $dayOfWeek)->first();
     }
+    
 }
 

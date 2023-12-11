@@ -70,9 +70,8 @@ class AssignClassTeacherModel extends Model
     }
 
     static public function getMyTimeTable($class_id, $subject_id) {
-
         $getWeek = WeekModel::getWeekUsingName(date('l'));
+        // return $getWeek->start_time;
         return ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $getWeek->id);
-
     }
 }
