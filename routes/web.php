@@ -8,6 +8,7 @@ use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\ClassTimetableController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -36,6 +37,7 @@ Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+
     Route::get('admin/admin/list', [AdminController::class, 'list']);
     Route::get('admin/admin/add', [AdminController::class, 'add']);
     Route::post('admin/admin/add', [AdminController::class, 'insert']);
@@ -120,7 +122,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/account', [UserController::class, 'account']);
     Route::post('admin/account', [UserController::class, 'updateAccountAdmin']);
 
-
+    Route::get('admin/examinations/exam/list', [ExaminationController::class, 'exam_list']);
+    Route::get('admin/examinations/exam/add', [ExaminationController::class, 'exam_add']);
+    Route::post('admin/examinations/exam/add', [ExaminationController::class, 'exam_insert']);
+    
 
 });
 

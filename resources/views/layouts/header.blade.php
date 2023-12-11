@@ -288,7 +288,29 @@
                   </a>
                 </li>
               </ul>
-            </li>                 
+            </li> 
+
+
+            <li class="nav-item @if(Request::segment(2) == 'examinations' ) menu-is-opening menu-open @endif ">
+              <a href="#" class="nav-link @if(Request::segment(2) == 'examinations' ) active @endif">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Examinations
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('admin/examinations/exam/list')}}" class="nav-link @if(Request::segment(3) == 'exam') active @endif">
+                    <i class="nav-icon fas fa-regular fa-school"></i>
+                    <p>
+                      Exam 
+                    </p>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>                  
 
             @elseif(Auth::user()->user_type == 2)
             <li class="nav-item">
